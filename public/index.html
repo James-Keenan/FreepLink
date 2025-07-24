@@ -11,7 +11,11 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>FreepLink</title>
+    <title>FreepLink - Debug Version</title>
+    <style>
+      body { font-family: Arial, sans-serif; }
+      .loading { text-align: center; padding: 50px; }
+    </style>
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       (function(l) {
@@ -28,7 +32,12 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <div class="loading">
+        <h2>Loading FreepLink...</h2>
+        <p>If this message persists, check the browser console for errors.</p>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
