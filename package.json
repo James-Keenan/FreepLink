@@ -2,7 +2,7 @@
   "name": "freeplink-react-clean",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YOUR_USERNAME.github.io/FreepLink",
+  "homepage": "https://James-Keenan.github.io/FreepLink",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
