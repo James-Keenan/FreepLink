@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../services/firebase';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAnalytics } from '../hooks/useAnalytics';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -14,12 +13,6 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { trackPageView, trackEvent } = useAnalytics();
-
-  useEffect(() => {
-    // Track login page view
-    trackPageView('Login');
-  }, [trackPageView]);
 
   const handleChange = (e) => {
     setFormData({
@@ -35,24 +28,10 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      
-      // Track successful login attempt (actual login event is tracked in App.js)
-      trackEvent('login_attempt', {
-        method: 'email',
-        success: true
-      });
-      
       navigate('/dashboard');
     } catch (error) {
       setError('Invalid email or password. Please try again.');
       console.error('Login error:', error);
-      
-      // Track failed login attempt
-      trackEvent('login_attempt', {
-        method: 'email',
-        success: false,
-        error_code: error.code
-      });
     } finally {
       setLoading(false);
     }

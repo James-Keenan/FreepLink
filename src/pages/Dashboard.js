@@ -1,16 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useAnalytics } from '../hooks/useAnalytics';
 
 const Dashboard = ({ user }) => {
-  const { trackPageView, trackUserAction } = useAnalytics();
-
-  useEffect(() => {
-    // Track dashboard page view
-    trackPageView('Dashboard');
-  }, [trackPageView]);
-
   // Function to format the member since date
   const formatMemberSince = (timestamp) => {
     if (!timestamp) return 'Unknown';
@@ -46,7 +38,7 @@ const Dashboard = ({ user }) => {
           <div className="dashboard-actions">
             <p>Dashboard functionality coming soon...</p>
             <button 
-              onClick={() => trackUserAction('explore_features', 'dashboard')}
+              onClick={() => console.log('Explore features clicked')}
               className="action-btn"
             >
               Explore Features
