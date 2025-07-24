@@ -37,12 +37,6 @@ const Dashboard = ({ user }) => {
           </div>
           <div className="dashboard-actions">
             <p>Dashboard functionality coming soon...</p>
-            <button 
-              onClick={() => console.log('Explore features clicked')}
-              className="action-btn"
-            >
-              Explore Features
-            </button>
           </div>
         </div>
       </main>

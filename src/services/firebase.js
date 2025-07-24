@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAcKQSoWL9mGfVUm-kQBXNln2jk1nmmnxI",
-    authDomain: "freeplink-83c62.firebaseapp.com",
-    projectId: "freeplink-83c62",
-    storageBucket: "freeplink-83c62.firebasestorage.app",
-    messagingSenderId: "117595277379",
-    appId: "1:117595277379:web:b788af95364a0ec2ac6cf6",
-    measurementId: "G-2S5B3J53CM"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
