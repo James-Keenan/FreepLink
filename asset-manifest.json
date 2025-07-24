@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/FreepLink/static/css/main.791f949c.css",
+    "main.js": "/FreepLink/static/js/main.2c5bd73a.js",
+    "static/js/453.c8a190d4.chunk.js": "/FreepLink/static/js/453.c8a190d4.chunk.js",
+    "index.html": "/FreepLink/index.html",
+    "main.791f949c.css.map": "/FreepLink/static/css/main.791f949c.css.map",
+    "main.2c5bd73a.js.map": "/FreepLink/static/js/main.2c5bd73a.js.map",
+    "453.c8a190d4.chunk.js.map": "/FreepLink/static/js/453.c8a190d4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.791f949c.css",
+    "static/js/main.2c5bd73a.js"
+  ]
+}
