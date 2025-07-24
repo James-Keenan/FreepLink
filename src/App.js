@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from './services/firebase';
+import { useAnalytics } from './hooks/useAnalytics';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -12,6 +13,7 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { trackEvent } = useAnalytics();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -28,6 +30,12 @@ function App() {
               ...firebaseUser,
               ...userData
             });
+            
+            // Track user login
+            trackEvent('login', {
+              method: 'email',
+              user_id: firebaseUser.uid
+            });
           } else {
             // If no Firestore document exists, just use Firebase Auth user
             setUser(firebaseUser);
@@ -43,7 +51,7 @@ function App() {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [trackEvent]);
 
   if (loading) {
     return (

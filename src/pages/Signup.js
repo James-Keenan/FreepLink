@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../services/firebase';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAnalytics } from '../hooks/useAnalytics';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -19,6 +20,7 @@ const Signup = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { trackEvent } = useAnalytics();
 
   const handleChange = (e) => {
     setFormData({
@@ -67,10 +69,22 @@ const Signup = () => {
         createdAt: serverTimestamp()
       });
 
+      // Track successful signup
+      trackEvent('sign_up', {
+        method: 'email',
+        user_id: user.uid
+      });
+
       navigate('/dashboard');
     } catch (error) {
       console.error('Signup error:', error);
       setError('Error creating account: ' + error.message);
+      
+      // Track signup error
+      trackEvent('signup_error', {
+        error_code: error.code,
+        error_message: error.message
+      });
     } finally {
       setLoading(false);
     }
