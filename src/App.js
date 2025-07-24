@@ -61,7 +61,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename="/FreepLink">
       <div className="App">
         <Routes>
           <Route 
