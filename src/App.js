@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './services/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from './services/firebase';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -13,8 +14,31 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        try {
+          // Fetch additional user data from Firestore
+          const userDocRef = doc(db, 'users', firebaseUser.uid);
+          const userDocSnap = await getDoc(userDocRef);
+          
+          if (userDocSnap.exists()) {
+            // Combine Firebase Auth user with Firestore data
+            const userData = userDocSnap.data();
+            setUser({
+              ...firebaseUser,
+              ...userData
+            });
+          } else {
+            // If no Firestore document exists, just use Firebase Auth user
+            setUser(firebaseUser);
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+          setUser(firebaseUser);
+        }
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
 
