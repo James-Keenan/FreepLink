@@ -27,9 +27,6 @@ const Dashboard = ({ user }) => {
             {user?.firstName && user?.lastName && (
               <p><strong>Name:</strong> {user.firstName} {user.lastName}</p>
             )}
-            {user?.userName && (
-              <p><strong>Username:</strong> {user.userName}</p>
-            )}
             {user?.email && <p><strong>Email:</strong> {user.email}</p>}
             {user?.createdAt && (
               <p><strong>Member Since:</strong> {formatMemberSince(user.createdAt)}</p>
