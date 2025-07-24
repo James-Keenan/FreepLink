@@ -47,14 +47,21 @@ function App() {
 
   if (loading) {
     return (
-      <div className="loading-container">
-        <h2>Loading FreepLink...</h2>
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '18px',
+        fontFamily: 'Arial, sans-serif'
+      }}>
+        Loading FreepLink...
       </div>
     );
   }
 
   return (
-    <Router>
+    <Router basename="/FreepLink">
       <div className="App">
         <Routes>
           <Route 
