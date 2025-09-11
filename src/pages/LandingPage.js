@@ -19,7 +19,7 @@ const LandingPage = () => {
 
         <div className="hero-main-content">
           <div className="hero-content">
-            <h2 className="hero-title">Friends & Family. Connected.</h2>
+            <h2 className="hero-title">Finally. Social That Makes Sense.</h2>
 
             <p className="hero-subtitle">
               Your private social space for the people who matter most. Share
