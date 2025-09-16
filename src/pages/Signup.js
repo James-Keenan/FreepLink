@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../services/firebase";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import AppInfo from "../components/AppInfo";
 import FreepLogo from "../logo/FREEPLOGO.png";
 
@@ -20,17 +18,11 @@ const Signup = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [pageLoaded, setPageLoaded] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   const isGitHubPages = location.pathname.includes("/FreepLink");
   const basePath = isGitHubPages ? "/FreepLink" : "";
-
-  useEffect(() => {
-    // Trigger smooth transition animation on component mount
-    setTimeout(() => setPageLoaded(true), 100);
-  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -89,11 +81,7 @@ const Signup = () => {
   };
 
   return (
-    <div
-      className={`signup-container page-transition ${
-        pageLoaded ? "fade-in" : ""
-      }`}
-    >
+    <div className="signup-container">
       <Link to={basePath || "/"} className="back-btn">
         ← Back
       </Link>

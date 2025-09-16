@@ -9,6 +9,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./services/firebase";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import LandingPage from "./pages/LandingPage";
@@ -97,6 +98,14 @@ function App() {
             }
           />
           <Route
+            path="/FreepLink/profile"
+            element={
+              <ProtectedRoute user={user} loading={loading}>
+                <Profile user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/login"
             element={user ? <Navigate to="/dashboard" /> : <Login />}
           />
@@ -109,6 +118,14 @@ function App() {
             element={
               <ProtectedRoute user={user} loading={loading}>
                 <Dashboard user={user} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute user={user} loading={loading}>
+                <Profile user={user} />
               </ProtectedRoute>
             }
           />
