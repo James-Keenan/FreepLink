@@ -8,12 +8,12 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./services/firebase";
-import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import LandingPage from "./pages/LandingPage";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./pages/Dashboard.jsx";
+import Profile from "./pages/Profile.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import "./App.css";
 
 function App() {

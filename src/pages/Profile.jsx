@@ -8,8 +8,8 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../services/firebase";
 import { useNavigate, useLocation } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 import "./Profile.css";
 
 const Profile = ({ user }) => {

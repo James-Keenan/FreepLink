@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../services/firebase";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import AppInfo from "../components/AppInfo";
+import AppInfo from "../components/AppInfo.jsx";
 import FreepLogo from "../logo/FREEPLOGO.png";
 
 const Signup = () => {

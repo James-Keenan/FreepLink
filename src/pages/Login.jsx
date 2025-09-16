@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import AppInfo from "../components/AppInfo";
+import AppInfo from "../components/AppInfo.jsx";
 import FreepLogo from "../logo/FREEPLOGO.png";
 
 const Login = () => {
