@@ -257,7 +257,7 @@
 
 .btn-primary {
   background: linear-gradient(135deg, #18f289 0%, #15d478 50%, #12b866 100%);
-  color: white;
+  color: rgb(231, 23, 23);
   box-shadow: 0 8px 25px rgba(24, 242, 137, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);

@@ -33,11 +33,11 @@ const Signup = () => {
 
   const validateForm = () => {
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match!");
+      setError("🔒 Passwords do not match!");
       return false;
     }
     if (formData.password.length < 6) {
-      setError("Password must be at least 6 characters long!");
+      setError("🔐 Password must be at least 6 characters long!");
       return false;
     }
     return true;
@@ -47,6 +47,23 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     setError("");
+
+    // Check for empty required fields
+    const requiredFields = [
+      "userName",
+      "firstName",
+      "lastName",
+      "email",
+      "password",
+      "confirmPassword",
+    ];
+    const emptyFields = requiredFields.filter((field) => !formData[field]);
+
+    if (emptyFields.length > 0) {
+      setError("⚠️ Please fill in all required fields!");
+      setLoading(false);
+      return;
+    }
 
     if (!validateForm()) {
       setLoading(false);
@@ -74,7 +91,17 @@ const Signup = () => {
       navigate(`${basePath}/dashboard`);
     } catch (error) {
       console.error("Signup error:", error);
-      setError("Error creating account: " + error.message);
+      if (error.code === "auth/email-already-in-use") {
+        setError(
+          "📧 This email is already registered. Try logging in instead!"
+        );
+      } else if (error.code === "auth/weak-password") {
+        setError("🔐 Password is too weak. Please choose a stronger password!");
+      } else if (error.code === "auth/invalid-email") {
+        setError("📧 Please enter a valid email address!");
+      } else {
+        setError("❌ Error creating account: " + error.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -98,7 +125,11 @@ const Signup = () => {
 
               {error && <div className="error-message">{error}</div>}
 
-              <div className="form-group">
+              <div
+                className={`form-group ${
+                  error && !formData.userName ? "error" : ""
+                }`}
+              >
                 <label htmlFor="userName">Username:</label>
                 <input
                   type="text"
@@ -111,7 +142,11 @@ const Signup = () => {
               </div>
 
               <div className="form-row">
-                <div className="form-group">
+                <div
+                  className={`form-group ${
+                    error && !formData.firstName ? "error" : ""
+                  }`}
+                >
                   <label htmlFor="firstName">First Name:</label>
                   <input
                     type="text"
@@ -123,7 +158,11 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div
+                  className={`form-group ${
+                    error && !formData.lastName ? "error" : ""
+                  }`}
+                >
                   <label htmlFor="lastName">Last Name:</label>
                   <input
                     type="text"
@@ -148,7 +187,11 @@ const Signup = () => {
                 />
               </div>
 
-              <div className="form-group">
+              <div
+                className={`form-group ${
+                  error && !formData.email ? "error" : ""
+                }`}
+              >
                 <label htmlFor="email">Email:</label>
                 <input
                   type="email"
@@ -161,7 +204,11 @@ const Signup = () => {
               </div>
 
               <div className="form-row">
-                <div className="form-group">
+                <div
+                  className={`form-group ${
+                    error && !formData.password ? "error" : ""
+                  }`}
+                >
                   <label htmlFor="password">Password:</label>
                   <input
                     type="password"
@@ -173,7 +220,11 @@ const Signup = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div
+                  className={`form-group ${
+                    error && !formData.confirmPassword ? "error" : ""
+                  }`}
+                >
                   <label htmlFor="confirmPassword">Confirm Password:</label>
                   <input
                     type="password"

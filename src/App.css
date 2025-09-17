@@ -138,20 +138,6 @@ body {
   font-weight: bold;
 }
 
-.sign-out-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.sign-out-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
 /* Auth Forms - Recreated to match landing page exactly */
 .login-container,
 .signup-container {
@@ -539,18 +525,328 @@ body {
 }
 
 .error-message {
-  background: rgba(255, 56, 96, 0.1);
-  color: #f9f4f4;
-  padding: 1rem;
-  border-radius: var(--radius-small);
-  margin-bottom: 1rem;
-  border: 1px solid rgba(255, 56, 96, 0.2);
-  font-weight: 500;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 56, 96, 0.15) 0%,
+    rgba(255, 77, 77, 0.15) 100%
+  );
+  color: #ff6b6b;
+  padding: 1.2rem;
+  border-radius: var(--radius-medium);
+  margin-bottom: 1.5rem;
+  border: 2px solid rgba(255, 77, 77, 0.4);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(255, 77, 77, 0.2);
+  position: relative;
+  animation: errorPulse 0.5s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  animation: errorShake 0.5s ease-out;
+}
+
+@keyframes errorPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes errorShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+
+.success-message {
+  background: linear-gradient(
+    135deg,
+    rgba(24, 242, 137, 0.15) 0%,
+    rgba(46, 213, 115, 0.15) 100%
+  );
+  color: var(--primary-green);
+  padding: 1.2rem;
+  border-radius: var(--radius-medium);
+  margin-bottom: 1.5rem;
+  border: 2px solid rgba(24, 242, 137, 0.4);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(24, 242, 137, 0.2);
+  position: relative;
+  animation: successSlideIn 0.5s ease-out;
+  backdrop-filter: blur(10px);
+}
+
+.success-message::before {
+  content: "✅";
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  animation: successBounce 0.6s ease-out;
+}
+
+@keyframes successSlideIn {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes successBounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Enhanced form field validation styles */
+.form-group.error input {
+  border: 2px solid #ff6b6b !important;
+  background: rgba(255, 107, 107, 0.1) !important;
+  animation: fieldError 0.3s ease-out;
+}
+
+.form-group.error label {
+  color: #ff6b6b !important;
+  font-weight: 600;
+}
+
+@keyframes fieldError {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Attention-grabbing notification styles */
+.notification-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 77, 77, 0.95) 0%,
+    rgba(255, 107, 107, 0.95) 100%
+  );
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-medium);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(255, 77, 77, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  animation: notificationSlideIn 0.5s ease-out;
+  font-weight: 600;
+  min-width: 300px;
+}
+
+.notification-popup.success {
+  background: linear-gradient(
+    135deg,
+    rgba(24, 242, 137, 0.95) 0%,
+    rgba(46, 213, 115, 0.95) 100%
+  );
+  box-shadow: 0 8px 30px rgba(24, 242, 137, 0.4);
+}
+
+.notification-popup::before {
+  content: "⚠️";
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.notification-popup.success::before {
+  content: "✅";
+}
+
+@keyframes notificationSlideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .form-links {
   text-align: center;
   margin-top: 2rem;
+}
+
+.forgot-password-btn {
+  background: transparent;
+  color: var(--primary-green);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.forgot-password-btn:hover {
+  color: #15d478;
+}
+
+.forgot-password-btn:disabled {
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Password Reset Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border: 1px solid rgba(24, 242, 137, 0.2);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  max-width: 450px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-strong);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header h3 {
+  color: var(--primary-green);
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.modal-body {
+  margin-bottom: 2rem;
+  color: #f9f4f4;
+}
+
+.modal-body p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.email-display {
+  background: rgba(24, 242, 137, 0.1);
+  border: 1px solid rgba(24, 242, 137, 0.3);
+  border-radius: var(--radius-small);
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: var(--primary-green);
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.modal-note {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: var(--radius-small);
+  border-left: 3px solid var(--primary-green);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-medium);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  min-width: 120px;
+}
+
+.modal-btn-cancel {
+  background: rgba(255, 255, 255, 0.1);
+  color: #a0a0a0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-btn-cancel:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.modal-btn-confirm {
+  background: var(--gradient-button);
+  color: white;
+  border: 1px solid var(--primary-green);
+}
+
+.modal-btn-confirm:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.modal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .form-links p {
