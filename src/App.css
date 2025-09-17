@@ -356,12 +356,7 @@ body {
   font-weight: 800;
   margin: 0 0 1rem 0;
   line-height: 1.1;
-  background: linear-gradient(135deg, #18f289 0%, #ffffff 50%, #18f289 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientFlow 4s ease-in-out infinite;
+  color: white;
   position: relative;
   letter-spacing: -0.02em;
   text-align: center;
