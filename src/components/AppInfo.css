@@ -1,0 +1,90 @@
+/* Compact AppInfo Component */
+.app-info {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(24, 242, 137, 0.1);
+  border: 1px solid rgba(24, 242, 137, 0.2);
+  max-width: 380px;
+  transition: all 0.3s ease;
+}
+
+.app-info:hover {
+  box-shadow: 0 6px 25px rgba(24, 242, 137, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(24, 242, 137, 0.2);
+}
+
+.app-header h2 {
+  color: #18f289;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.beta-badge {
+  background: #18f289;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Content */
+.info-content {
+  text-align: left;
+}
+
+.tagline {
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+}
+
+.status-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: rgba(24, 242, 137, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #2d3748;
+  line-height: 1.4;
+}
+
+.status-icon {
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-info {
+    max-width: 100%;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .app-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+  }
+}

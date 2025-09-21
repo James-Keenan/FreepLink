@@ -1,0 +1,20 @@
+name: Security Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Block legacy REACT_APP firebase vars
+        run: |
+          if grep -R "REACT_APP_FIREBASE_" -n .; then
+            echo "Found forbidden legacy REACT_APP_FIREBASE_ variables. Use VITE_ prefix only." >&2
+            exit 1
+          fi
+          echo "No forbidden env variable names found."
