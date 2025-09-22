@@ -109,7 +109,10 @@ const Login = () => {
         <div className="auth-layout">
           <div className="auth-form-container">
             <form onSubmit={handleSubmit} className="auth-form">
-              <h2>Login</h2>
+              <h2>Login to FreepLink</h2>
+              <p style={{textAlign: 'center', fontSize: '0.9em', color: '#666', marginBottom: '20px'}}>
+                Sign in to your FreepLink account
+              </p>
 
               {error && <div className="error-message">{error}</div>}
               {resetEmailSent && (
