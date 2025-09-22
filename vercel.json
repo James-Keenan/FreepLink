@@ -9,5 +9,31 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://freeplink.vercel.app/$1",
+      "permanent": true,
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
+      ]
+    }
   ]
 }
