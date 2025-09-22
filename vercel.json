@@ -24,7 +24,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "https://freeplink.vercel.app/$1",
+      "destination": "https://$host/$1",
       "permanent": true,
       "statusCode": 301,
       "has": [
